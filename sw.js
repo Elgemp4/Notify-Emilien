@@ -12,7 +12,6 @@ addEventListener("activate", (e) => {
 //When we receive a message from the page, we show a notification
 addEventListener("message", async (e) => {
     openedWindow = e.source;
-    console.log(Notification.permission)
     if (Notification.permission === "granted") {
         registration.showNotification("Clique ici pour revenir à l'onglet ouvert !");
     }
