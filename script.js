@@ -18,21 +18,23 @@ addEventListener("blur", (e) => {
         if(registration != null){
             registration.active.postMessage("blured");
         }
+        closePageTimeoutId = null;
     }, 5000)
 })
 
-//
+//When the window is focused back cancel the timeout if there is one
 addEventListener("focus", (e) => {
     if(closePageTimeoutId != null){
         clearTimeout(closePageTimeoutId);
     }
 })
 
-
+//Request the permission if it isn't granted
 if (Notification.permission !== "granted") {
   Notification.requestPermission();
 }
 
+//Gets the notify me button and send a notification when it's clicked
 const $notifyMe = document.querySelector(".notify-me");
 $notifyMe.addEventListener("click", (e) => {
     e.preventDefault();
